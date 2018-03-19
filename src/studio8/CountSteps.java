@@ -1,8 +1,9 @@
 package studio8;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-import com.sun.java_cup.internal.runtime.Scanner;
 
 // TODO: Develop an algorithm to count steps in accelerometer data
 //    Major steeps:
@@ -20,10 +21,14 @@ public class CountSteps {
 	}
 	
 	public static void main (String[] args) {
-			File file = new File("data/data.csv");
-			Scanner scan = new Scanner(file);
 			
-			CountSteps counts = new CountSteps (scan);
+			try {
+				CountSteps counts = new CountSteps (new Scanner(new File ("data/data.csv")));
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 	}
 }
